@@ -24,11 +24,9 @@ class App extends Component {
     if(this.state.angka < 10)
     {
       this.setState({angka: this.state.angka+1, message:''})
-
     }
     else {
-      this.setState({angka: this.state.angka, message:'harus dibawah 10'})
-      
+      this.setState({message:'harus dibawah 10'})
     }
   }
   kurang = () => {
@@ -38,14 +36,15 @@ class App extends Component {
 
     }
     else {
-      this.setState({angka: this.state.angka, message:'harus diatas 0'})
+      this.setState({message:'harus diatas 0'})
       
     }
 
   }
 
+ 
   render() {
-    //const {counter,name, typing} = this.state;
+    // const {counter,name, typing} = this.state;
     const {angka, message} = this.state;
     return (
       <div className="App">
@@ -54,12 +53,16 @@ class App extends Component {
 
         <input type="text" value={typing} onChange={this.handleOnChange}/>
         <button onClick={this.handleOnClick}>Insert</button> */}
-        {angka}
-        <br/>
-        <button onClick={this.tambah}>Tambah</button>
-        <button onClick={this.kurang}>Kurang</button>
-        <br/>
-        {message}
+        <div className="container">
+          <h1>{angka}</h1>
+          <div className="btn-group">
+            <button className="btn btn-primary" onClick={this.tambah}>Tambah</button>
+            <button className="btn btn-primary" onClick={this.kurang}>Kurang</button>
+          </div>
+          
+          <br/>
+          {message}
+        </div>
       </div>
     );
   }
